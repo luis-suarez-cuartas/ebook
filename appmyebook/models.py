@@ -17,7 +17,7 @@ class Libro(models.Model):
     autor = models.CharField(max_length=50)
     isbn = models.CharField(max_length=13)
     descripcion = models.TextField()
-    genero = models.ForeignKey(Genero) # Un libro solo puede tener un género
+    genero = models.ForeignKey(Genero, on_delete=models.CASCADE) # Un libro solo puede tener un género
     idioma = models.ManyToManyField(Idioma) # Un libro puede estar en varios idiomas
     reseñas = models.TextField()
     def __str__(self):

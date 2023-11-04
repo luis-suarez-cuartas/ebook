@@ -15,3 +15,21 @@ def index_libro(request, genero_id, idioma_id):
     libros = get_list_or_404(Libro, genero=genero, idioma=idioma)
     context = {'libros': libros}
     return render(request, 'generoIdioma.html', context) #TODO generoIdioma.html no existe
+
+def index(request):
+    return render(request, 'index.html')
+
+def filosofia(request):
+    return render(request, 'filosofia.html')
+
+def literaturaClasica(request):
+    return render(request, 'literaturaClasica.html')
+
+def novela(request):
+    return render(request, 'novela.html')
+
+def poesia(request):
+    return render(request, 'poesia.html')
+
+def teatro(request):
+    return render(request, 'teatro.html')

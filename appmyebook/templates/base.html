@@ -1,13 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" href="style.css">
-        <title>{% block titulo %}Gestor de Empleados{% endblock %}</title>
-    </head>
-    <body>
-        <div id="content">
-	     <h1>Gestor de Empleados</h1>
-            {% block contenido %}{% endblock %}
-        </div>
-    </body>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <title>{% block titulo %}My ebook{% endblock %}</title>
+    {% block css %}    
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    {% endblock %}
+    {% block javascript %}
+    {% endblock %}    
+</head>
+<body>
+    <div id="content">
+     <h1>Gestor de Empleados</h1>
+        {% block contenido %}{% endblock %}
+    </div>
+</body>
 </html>
