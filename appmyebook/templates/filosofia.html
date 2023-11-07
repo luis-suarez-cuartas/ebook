@@ -14,6 +14,14 @@
     <main>
         <h3>Filosofía</h3>
         <p>La filosofía es un género literario que se dedica a explorar preguntas fundamentales sobre la existencia, la realidad, la conciencia, la moral, la verdad y el conocimiento. Los textos filosóficos suelen presentar argumentos lógicos y reflexiones profundas para desentrañar los misterios del universo y la experiencia humana. Este género abarca una amplia gama de escuelas de pensamiento y tradiciones, desde la filosofía antigua hasta las corrientes contemporáneas, ofreciendo una rica fuente de sabiduría e inspiración.</p>
+        <h4>Libros de Filosofía en {{ idioma_seleccionado.nombre }}</h4>
+        <ul>
+            {% for libro in libros %}
+                <li>
+                    <a href="{% url 'detalle_libro' libro.id %}">{{ libro.titulo }}</a>
+                </li>
+            {% endfor %}
+        </ul>
     </main>
 {% endblock %}
 
