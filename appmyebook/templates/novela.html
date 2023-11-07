@@ -1,7 +1,6 @@
 {% extends "base.html" %}
-{% block titulo %}My ebook{% endblock %}
 {% block contenido %}
-    <h1>My ebook</h1>
+    <h1><a href="{% url 'index' %}">My ebook</a></h1>       
     <nav class="navbar">
         <ul>
             <li><a href="{% url 'literaturaClasica' %}">Literatura Clásica</a></li>
