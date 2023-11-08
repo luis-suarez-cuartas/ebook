@@ -19,7 +19,7 @@ class Libro(models.Model):
     descripcion = models.TextField()
     genero = models.ForeignKey(Genero, on_delete=models.CASCADE) # Un libro solo puede tener un género
     idioma = models.ManyToManyField(Idioma) # Un libro puede estar en varios idiomas
-    imagen = models.ImageField(upload_to='static/img/libros/', null=True, blank=True) # Campo para la imagen del libro
+    imagen = models.ImageField(upload_to='', null=True, blank=True) # Campo para la imagen del libro
     def __str__(self):
         return self.titulo
 

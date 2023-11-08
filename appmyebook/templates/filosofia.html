@@ -7,7 +7,7 @@
         <div class="libros-container">
             {% for libro in libros %}
                 <div class="libro-item">
-                    <img src="{{ libro.imagen.url }}" alt="{{ libro.titulo }}" />
+                    <img src="/appmyebook{{ libro.imagen.url }}" alt="{{ libro.titulo }}" />
                     <p>{{ libro.titulo }}</p>
                 </div>
                 {% if forloop.counter|divisibleby:4 %}
