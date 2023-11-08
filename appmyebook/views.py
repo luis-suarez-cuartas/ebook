@@ -4,10 +4,10 @@ from .models import Libro, Genero, Idioma
 from django.shortcuts import redirect
 
 #devuelve los datos de un libro
-def show_libro(request, libro_id):
-    libro = get_object_or_404(libro, pk=libro_id)
+def detalle_libro(request, libro_id):
+    libro = get_object_or_404(Libro, pk=libro_id)
     context = {'libro': libro }
-    return render(request, 'libro.html', context)
+    return render(request, 'detalle_libro.html', context)
     
 # devuelve los libros de un genero y un idioma
 def index_libro(request, genero_id, idioma_id):
@@ -23,36 +23,35 @@ def index(request):
 def literaturaClasica(request):
     idioma_nombre = request.session.get('idioma_seleccionado', None)
     idioma = get_object_or_404(Idioma, nombre=idioma_nombre)
-    libros = get_list_or_404(Libro, genero='Literatura Clásica', idioma=idioma)
+    libros = Libro.objects.filter(Libro, genero__nombre='Literatura Clásica', idioma=idioma)
     context = {'libros': libros, 'idioma': idioma}
     return render(request, 'literaturaClasica.html', context)
 
 def filosofia(request):
     idioma_nombre = request.session.get('idioma_seleccionado', None)
     idioma = get_object_or_404(Idioma, nombre=idioma_nombre)
-    libros = get_list_or_404(genero='Filosofía', idioma=idioma)
+    libros = Libro.objects.filter(genero__nombre='Filosofía', idioma=idioma)
     context = {'libros': libros, 'idioma': idioma}
     return render(request, 'filosofia.html', context)
 
 def poesia(request):
     idioma_nombre = request.session.get('idioma_seleccionado', None)
     idioma = get_object_or_404(Idioma, nombre=idioma_nombre)
-    libros = get_list_or_404(genero='Poesía', idioma=idioma)
+    libros = Libro.objects.filter(genero__nombre='Poesía', idioma=idioma)
     context = {'libros': libros, 'idioma': idioma}
     return render(request, 'poesia.html', context)
 
 def teatro(request):
     idioma_nombre = request.session.get('idioma_seleccionado', None)
     idioma = get_object_or_404(Idioma, nombre=idioma_nombre)
-    libros = get_list_or_404(genero='Teatro', idioma=idioma)
+    libros = Libro.objects.filter(genero__nombre='Teatro', idioma=idioma)
     context = {'libros': libros, 'idioma': idioma}
     return render(request, 'teatro.html', context)
-
 
 def novela(request):
     idioma_nombre = request.session.get('idioma_seleccionado', None)
     idioma = get_object_or_404(Idioma, nombre=idioma_nombre)
-    libros = Libro.objects.filter(genero='Novela', idioma=idioma)
+    libros = Libro.objects.filter(genero__nombre='Novela', idioma=idioma)
     context = {'libros': libros, 'idioma': idioma}
     return render(request, 'novela.html', context)
 

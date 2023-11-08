@@ -1,25 +1,5 @@
 {% extends "base.html" %}
 {% block contenido %}
-    <h1><a href="{% url 'index' %}">My ebook</a></h1>
-    <nav class="navbar">
-        <ul>
-            <li><a href="{% url 'literaturaClasica' %}">Literatura Clásica</a></li>
-            <li><a href="{% url 'novela' %}">Novela</a></li>
-            <li><a href="{% url 'filosofia'  %}">Filosofía</a></li>
-            <li><a href="{% url 'teatro' %}">Teatro</a></li>
-            <li><a href="{% url 'poesia' %}">Poesía</a></li>
-        </ul>
-        <form method="post" action="{% url 'cambiar_idioma' %}">
-            {% csrf_token %}
-            <select name="idioma" id="select_idioma" onchange="this.form.submit()">
-                <option value="castellano" {% if request.session.idioma_seleccionado == 'castellano' %}selected{% endif %}>Castellano</option>
-                <option value="euskera" {% if request.session.idioma_seleccionado == 'euskera' %}selected{% endif %}>Euskera</option>
-                <option value="frances" {% if request.session.idioma_seleccionado == 'frances' %}selected{% endif %}>Francés</option>
-                <option value="ingles" {% if request.session.idioma_seleccionado == 'ingles' %}selected{% endif %}>Inglés</option>
-                <option value="aleman" {% if request.session.idioma_seleccionado == 'aleman' %}selected{% endif %}>Alemán</option>
-            </select>
-        </form>
-    </nav>
     <section class = "contenedor general">
         <h2> Generos Literarios </h2>
         <div class = "Contenido">
