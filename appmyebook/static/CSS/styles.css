@@ -23,6 +23,10 @@
     float: left;
 }
 
+.menu-icon {
+    display: none;
+}
+
 
 /* Contenido */
 body{
