@@ -22,6 +22,7 @@ def index(request):
 def filosofia(request):
     return render(request, 'filosofia.html')
 
+
 def literaturaClasica(request):
     return render(request, 'literaturaClasica.html')
 
