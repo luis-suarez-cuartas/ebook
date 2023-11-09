@@ -1,21 +1,17 @@
 {% extends "base.html" %}
 {% block contenido %}
-    <h1><a href="{% url 'index' %}">My ebook</a></h1>       
-    <nav class="navbar">
-        <ul>
-            <li><a href="{% url 'literaturaClasica' %}">Literatura Clásica</a></li>
-            <li><a href="{% url 'novela' %}">Novela</a></li>
-            <li><a href="{% url 'filosofia' %}">Filosofía</a></li>
-            <li><a href="{% url 'teatro' %}">Teatro</a></li>
-            <li><a href="{% url 'poesia' %}">Poesía</a></li>
-        </ul>
-    </nav>
-
     <main>
         <h3>Novela</h3>
         <p>La novela es un género literario que se caracteriza por ser una narración extensa en prosa, que presenta una trama compleja y desarrollada con detalle. Este género permite a los autores explorar profundamente los pensamientos, emociones y experiencias de los personajes, creando un mundo ficticio que puede reflejar o cuestionar la realidad. Las novelas pueden abarcar una amplia gama de temas y estilos, desde el realismo hasta la fantasía, y desde la novela histórica hasta la ciencia ficción, ofreciendo a los lectores una inmersión profunda en vidas y mundos distintos.</p>
+        <ul>
+             {% for libro in libros %}
+                <li>
+                    <a href="{% url 'detalle_libro' libro.id %}">{{ libro.titulo }}</a>
+                </li>
+            {% endfor %} 
+        </ul>
     </main>
-{% endblock %}
 
+{% endblock %}
 
 

@@ -8,12 +8,33 @@
     {% block css %}    
         {% load static %}
         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.0.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
     {% endblock %}
     {% block javascript %}
     {% endblock %}    
 </head>
 <body>
     <div id="content">
+        <h1><a href="{% url 'index' %}">My ebook</a></h1>
+        <nav class="navbar">
+            <ul>
+                <li><a href="{% url 'literaturaClasica' %}">Literatura Clásica</a></li>
+                <li><a href="{% url 'novela' %}">Novela</a></li>
+                <li><a href="{% url 'filosofia' %}">Filosofía</a></li>
+                <li><a href="{% url 'teatro' %}">Teatro</a></li>
+                <li><a href="{% url 'poesia' %}">Poesía</a></li>
+            </ul>
+            <form method="post" action="{% url 'cambiar_idioma' %}">
+                {% csrf_token %}
+                <select name="idioma" id="select_idioma" onchange="this.form.submit()">
+                    <option value="Castellano" {% if request.session.idioma_seleccionado == 'Castellano' %}selected{% endif %}>Castellano</option>
+                    <option value="Euskera" {% if request.session.idioma_seleccionado == 'Euskera' %}selected{% endif %}>Euskera</option>
+                    <option value="Francés" {% if request.session.idioma_seleccionado == 'Francés' %}selected{% endif %}>Francés</option>
+                    <option value="Inglés" {% if request.session.idioma_seleccionado == 'Inglés' %}selected{% endif %}>Inglés</option>
+                    <option value="Alemán" {% if request.session.idioma_seleccionado == 'Alemán' %}selected{% endif %}>Alemán</option>
+                </select>
+            </form>
+        </nav>
         {% block contenido %}{% endblock %}
     </div>
 </body>

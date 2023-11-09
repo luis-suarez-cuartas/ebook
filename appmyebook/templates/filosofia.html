@@ -1,19 +1,20 @@
 {% extends "base.html" %}
 {% block contenido %}
-    <h1><a href="{% url 'index' %}">My ebook</a></h1>
-    <nav class="navbar">
-        <ul>
-            <li><a href="{% url 'literaturaClasica' %}">Literatura Clásica</a></li>
-            <li><a href="{% url 'novela' %}">Novela</a></li>
-            <li><a href="{% url 'filosofia' %}">Filosofía</a></li>
-            <li><a href="{% url 'teatro' %}">Teatro</a></li>
-            <li><a href="{% url 'poesia' %}">Poesía</a></li>
-        </ul>
-    </nav>
-
     <main>
         <h3>Filosofía</h3>
         <p>La filosofía es un género literario que se dedica a explorar preguntas fundamentales sobre la existencia, la realidad, la conciencia, la moral, la verdad y el conocimiento. Los textos filosóficos suelen presentar argumentos lógicos y reflexiones profundas para desentrañar los misterios del universo y la experiencia humana. Este género abarca una amplia gama de escuelas de pensamiento y tradiciones, desde la filosofía antigua hasta las corrientes contemporáneas, ofreciendo una rica fuente de sabiduría e inspiración.</p>
+        <h4>Libros de Filosofía en {{ idioma_seleccionado.nombre }}</h4>
+        <div class="libros-container">
+            {% for libro in libros %}
+                <div class="libro-item">
+                    <img src="/appmyebook{{ libro.imagen.url }}" alt="{{ libro.titulo }}" />
+                    <p>{{ libro.titulo }}</p>
+                </div>
+                {% if forloop.counter|divisibleby:4 %}
+                    </div><div class="libros-container">
+                {% endif %}
+            {% endfor %}
+        </div>
     </main>
 {% endblock %}
 
