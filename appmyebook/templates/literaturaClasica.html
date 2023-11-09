@@ -1,18 +1,16 @@
 {% extends "base.html" %}
 {% block contenido %}
     <main>
-        <h3>Literatura Clásica</h3>
-        <p>La literatura clásica se refiere a los trabajos trascendentales y atemporales que han dejado una marca indeleble en la historia de la literatura. Este género abarca las obras maestras de grandes autores de la antigüedad, como Homero, Shakespeare, Dante y Cervantes, cuyas historias y personajes han influido en generaciones de escritores y lectores. La literatura clásica es conocida por su profundidad temática, su riqueza lingüística y su exploración de la condición humana, ofreciendo una ventana a diferentes épocas y culturas.</p>
-        <ul>
-            {% for libro in libros %}
-            <div class="libro-item">
-                <img src="/appmyebook{{ libro.imagen.url }}" alt="{{ libro.titulo }}" />
-                <a href="{% url 'detalle_libro' libro.id %}">{{ libro.titulo }}</a>
-            </div>
-            {% if forloop.counter|divisibleby:4 %}
-                </div><div class="libros-container">
-            {% endif %}
-        {% endfor %}
-        </ul>
-    </main>
+        <div class="paginaGenero">
+            <h3>Literatura Clásica</h3>
+            <p>La literatura clásica se refiere a los trabajos trascendentales y atemporales que han dejado una marca indeleble en la historia de la literatura. Este género abarca las obras maestras de grandes autores de la antigüedad, como Homero, Shakespeare, Dante y Cervantes, cuyas historias y personajes han influido en generaciones de escritores y lectores. La literatura clásica es conocida por su profundidad temática, su riqueza lingüística y su exploración de la condición humana, ofreciendo una ventana a diferentes épocas y culturas.</p>            <ul>
+                {% for libro in libros %}
+                <div class="libro-item">
+                    <a href="{% url 'detalle_libro' libro.id %}"><img src="/appmyebook{{ libro.imagen.url }}" alt="{{ libro.titulo }}" /></a>
+                    <a href="{% url 'detalle_libro' libro.id %}">{{ libro.titulo }}</a>
+                </div>
+                {% endfor %}
+            </ul>
+        </div>
+    </main> 
 {% endblock %}
