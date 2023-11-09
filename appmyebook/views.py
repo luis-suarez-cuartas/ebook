@@ -23,7 +23,7 @@ def index(request):
 def literaturaClasica(request):
     idioma_nombre = request.session.get('idioma_seleccionado', None)
     idioma = get_object_or_404(Idioma, nombre=idioma_nombre)
-    libros = Libro.objects.filter(Libro, genero__nombre='Literatura Clásica', idioma=idioma)
+    libros = Libro.objects.filter(genero__nombre='Literatura Clásica', idioma=idioma)
     context = {'libros': libros, 'idioma': idioma}
     return render(request, 'literaturaClasica.html', context)
 
