@@ -1,20 +1,18 @@
 {% extends "base.html" %}
 {% block contenido %}
     <main>
-        <h3>Poesia</h3>
-        <p>La poesía es un género literario que se caracteriza por su forma expresiva y artística, utilizando el lenguaje para evocar emociones y representar la realidad de una manera subjetiva. A través de la rima, el ritmo y las metáforas, los poetas crean un mundo lleno de significado y belleza. Este género abarca desde los sonetos clásicos hasta la poesía libre contemporánea, ofreciendo una diversidad de estilos y temas que reflejan la complejidad de la experiencia humana.</p>
-        <ul>
+        <div class="paginaGenero">
+            <h3>Poesia</h3>
+            <p>La poesía es un género literario que se caracteriza por su forma expresiva y artística, utilizando el lenguaje para evocar emociones y representar la realidad de una manera subjetiva. A través de la rima, el ritmo y las metáforas, los poetas crean un mundo lleno de significado y belleza. Este género abarca desde los sonetos clásicos hasta la poesía libre contemporánea, ofreciendo una diversidad de estilos y temas que reflejan la complejidad de la experiencia humana.</p>
             {% for libro in libros %}
-            <div class="libro-item">
-                <img src="/appmyebook{{ libro.imagen.url }}" alt="{{ libro.titulo }}" />
-                <a href="{% url 'detalle_libro' libro.id %}">{{ libro.titulo }}</a>
-            </div>
-            {% if forloop.counter|divisibleby:4 %}
-                </div><div class="libros-container">
-            {% endif %}
-        {% endfor %}
-        </ul>
-    </main>
+                <div class="libro-item">
+                    <a href="{% url 'detalle_libro' libro.id %}"><img src="/appmyebook{{ libro.imagen.url }}" alt="{{ libro.titulo }}" /></a>
+                    <a href="{% url 'detalle_libro' libro.id %}">{{ libro.titulo }}</a>
+                </div>
+                {% endfor %}
+            </ul>
+        </div>
+    </main> 
 {% endblock %}
 
 

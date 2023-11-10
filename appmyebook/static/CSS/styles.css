@@ -27,16 +27,6 @@
     display: none;
 }
 
-
-/* Contenido */
-body{
-    margin: 0px;
-}
-main{
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
 h1{
     text-decoration: none;
     text-align: center;
@@ -115,6 +105,17 @@ h1 a:hover:before {
     height: 450px;
     padding: 170px 55px;
 }
+
+.Contenido-1 a, .Contenido-2 a,.Contenido-3 a,.Contenido-4 a,.Contenido-5 a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.Contenido-1 a:hover, .Contenido-2 a:hover,.Contenido-3 a:hover,.Contenido-4 a:hover,.Contenido-5 a:hover{
+    color: #6d747f;
+}
+
 .h2{
     font-size: 70px;
     text-transform: uppercase;
@@ -226,3 +227,113 @@ footer{
     opacity: .4;
     font-weight: 200;
 }
+
+.detalle_libro div {
+    width: 80%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.detalle_libro p {
+    line-height: 1.6;
+}
+
+.detalle_libro ul {
+    list-style: none;
+    padding: 0;
+}
+
+.detalle_libro li {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.detalle_libro img {
+    width: auto;
+    height: auto;
+}
+
+.paginaGenero h3 {
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.paginaGenero main {
+    width: 80%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.paginaGenero p {
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.paginaGenero ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.libro-item {
+    width: 25%;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.libro-item img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.libro-item a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.libro-item a:hover{
+    color: #6d747f;
+}
+
+.libro-item:hover img {
+    transform: scale(1.05);
+}
+
+main .paginaGenero {
+    width: 80%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+/* Contenido */
+body{
+    margin: 0px;
+    overflow-x: hidden;
+    background-color: #f4f4f4;
+}
+main{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
