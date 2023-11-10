@@ -294,23 +294,30 @@ footer{
     border-radius: 4px;
     padding: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    position: relative; /* Agregamos posición relativa al contenedor .libro-item */
 }
 
 .libro-item img {
-    max-width: 100%;
+    width: 100%; /* Cambiamos de 100% a 90% para que la imagen ocupe el 90% del contenedor */
     height: auto;
     margin-bottom: 10px;
+    display: block;
+    margin: 0 auto; /* Centramos la imagen dentro del contenedor */
 }
 
 .libro-item a {
     color: #333;
     text-decoration: none;
     font-weight: bold;
+    display: block; 
 }
+
+
 
 .libro-item a:hover{
     color: #6d747f;
-}
+} 
+
 
 .libro-item:hover img {
     transform: scale(1.05);
