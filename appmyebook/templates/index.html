@@ -35,13 +35,15 @@
             </div>
         </div>
     </section>
-    <div>
-        <h2> Últimos Libros Añadidos </h2>
+    <div class="librosRecientes">
+        <h3> Últimos Libros Añadidos </h3>
+        <!-- {{ ultimos_libros }} Imprimir los libros para depuración --> 
             {% for libro in ultimos_libros %}
-                <dsiv>
+                <div class="librosRecientesLista">
                     <a href="{% url 'detalle_libro' libro.id %}"><img src="/appmyebook{{ libro.imagen.url }}" alt="{{ libro.titulo }}" /></a>
+                    <p>Género: {{ libro.genero }}</p>
                     <a href="{% url 'detalle_libro' libro.id %}">{{ libro.titulo }}</a>
-                </dsiv>
+                </div>
             {% endfor %}
     </div>  
 {% endblock %}

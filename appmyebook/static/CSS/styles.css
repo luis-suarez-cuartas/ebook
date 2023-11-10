@@ -70,7 +70,7 @@ h1 a:hover:before {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 450px;
+    height: auto;
     padding: 170px 55px;
 }
 .Contenido-2{
@@ -78,7 +78,7 @@ h1 a:hover:before {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 450px;
+    height: auto;
     padding: 170px 55px;
 }
 .Contenido-3{
@@ -86,7 +86,7 @@ h1 a:hover:before {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 450px;
+    height: auto;
     padding: 170px 55px;
 }
 .Contenido-4{
@@ -94,7 +94,7 @@ h1 a:hover:before {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 450px;
+    height: auto;
     padding: 170px 55px;
 }
 .Contenido-5{
@@ -102,7 +102,7 @@ h1 a:hover:before {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 450px;
+    height: auto;
     padding: 170px 55px;
 }
 
@@ -128,10 +128,14 @@ h1 a:hover:before {
     color: #fffdfc;
     text-transform: uppercase;
 }
-.texto p{
-    color: #fffdfc;
+.texto p {
+    color: #5d5454;
     font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.7); /* Fondo semitransparente */
+    padding: 10px; /* Espaciado interno para mayor legibilidad */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
+
 /* Estilo para el contenedor de libros */
 .libros-container {
     display: flex;
@@ -263,15 +267,6 @@ footer{
     margin-top: 20px;
 }
 
-.paginaGenero main {
-    width: 80%;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 4px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
-}
-
 .paginaGenero p {
     line-height: 1.6;
     color: #666;
@@ -283,7 +278,7 @@ footer{
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .libro-item {
@@ -329,6 +324,77 @@ main .paginaGenero {
     border-radius: 4px;
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
+
+.librosRecientesLista img {
+    width: 90%;
+    height: 80%;
+    margin-bottom: 10px;
+    display: block;
+    margin: 0 auto; /* Centramos la imagen dentro del contenedor */
+}
+
+.librosRecientesLista a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    display: block; 
+}
+
+.librosRecientesLista a:hover{
+    color: #6d747f;
+} 
+
+
+.librosRecientesLista:hover img {
+    transform: scale(1.05);
+}
+
+.librosRecientes h3 {
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+    width: 100%; /* Ocupa toda la anchura disponible */
+}
+
+.librosRecientes p {
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.librosRecientes ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.librosRecientes {
+    width: 80%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: stretch;
+}
+
+
+.librosRecientesLista {
+    width: 30%; /* Cambié el ancho fijo a un porcentaje para que se ajuste al contenedor padre */
+    margin-bottom: 20px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    position: relative;
+}
+
 
 /* Contenido */
 body{

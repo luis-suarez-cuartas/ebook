@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, get_list_or_404
 from django.shortcuts import render
+from django.db.models import Max
 from .models import Libro, Genero, Idioma
 from django.shortcuts import redirect
 
@@ -24,9 +25,9 @@ def index(request):
     for genero in generos:
         ultimo_libro = Libro.objects.filter(genero=genero).order_by('-fecha_creacion').first()
         if ultimo_libro:
-            ultimos_libros.append(ultimo_libro)
+            ultimos_libros.append(ultimo_libro)        
     context = {'ultimos_libros': ultimos_libros}  
-    return render(request, 'index.html')
+    return render(request, 'index.html', context)
 
 def literaturaClasica(request):
     idioma_nombre = request.session.get('idioma_seleccionado', None)
