@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.db import models
  
 class Genero(models.Model):
@@ -20,6 +21,7 @@ class Libro(models.Model):
     genero = models.ForeignKey(Genero, on_delete=models.CASCADE) # Un libro solo puede tener un género
     idioma = models.ManyToManyField(Idioma) # Un libro puede estar en varios idiomas
     imagen = models.ImageField(upload_to='', null=True, blank=True) # Campo para la imagen del libro
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.titulo
 

@@ -25,7 +25,7 @@ def literaturaClasica(request):
     if idioma_nombre is None:
         idioma_nombre = 'Castellano'
     idioma = get_object_or_404(Idioma, nombre=idioma_nombre)
-    libros = Libro.objects.filter(genero__nombre='Literatura Clásica', idioma=idioma)
+    libros = Libro.objects.filter(genero__nombre='Literatura Clásica', idioma=idioma).order_by('-fecha_creacion')
     context = {'libros': libros, 'idioma': idioma}
     return render(request, 'literaturaClasica.html', context)
 
@@ -34,7 +34,7 @@ def filosofia(request):
     if idioma_nombre is None:
         idioma_nombre = 'Castellano'
     idioma = get_object_or_404(Idioma, nombre=idioma_nombre)
-    libros = Libro.objects.filter(genero__nombre='Filosofía', idioma=idioma)
+    libros = Libro.objects.filter(genero__nombre='Filosofía', idioma=idioma).order_by('-fecha_creacion')
     context = {'libros': libros, 'idioma': idioma}
     return render(request, 'filosofia.html', context)
 
@@ -43,7 +43,7 @@ def poesia(request):
     if idioma_nombre is None:
         idioma_nombre = 'Castellano'
     idioma = get_object_or_404(Idioma, nombre=idioma_nombre)
-    libros = Libro.objects.filter(genero__nombre='Poesía', idioma=idioma)
+    libros = Libro.objects.filter(genero__nombre='Poesía', idioma=idioma).order_by('-fecha_creacion')
     context = {'libros': libros, 'idioma': idioma}
     return render(request, 'poesia.html', context)
 
@@ -52,7 +52,7 @@ def teatro(request):
     if idioma_nombre is None:
         idioma_nombre = 'Castellano'
     idioma = get_object_or_404(Idioma, nombre=idioma_nombre)
-    libros = Libro.objects.filter(genero__nombre='Teatro', idioma=idioma)
+    libros = Libro.objects.filter(genero__nombre='Teatro', idioma=idioma).order_by('-fecha_creacion')
     context = {'libros': libros, 'idioma': idioma}
     return render(request, 'teatro.html', context)
 
@@ -61,7 +61,7 @@ def novela(request):
     if idioma_nombre is None:
         idioma_nombre = 'Castellano'
     idioma = get_object_or_404(Idioma, nombre=idioma_nombre)
-    libros = Libro.objects.filter(genero__nombre='Novela', idioma=idioma)
+    libros = Libro.objects.filter(genero__nombre='Novela', idioma=idioma).order_by('-fecha_creacion')
     context = {'libros': libros, 'idioma': idioma}
     return render(request, 'novela.html', context)
 

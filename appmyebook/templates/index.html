@@ -35,7 +35,18 @@
             </div>
         </div>
     </section>
-    
+    <div>
+        <h2> Últimos Libros Añadidos </h2>
+            {% if libros in libros %}
+                <div>
+                    <a href="{% url 'detalle_libro' libro.id %}"><img src="/appmyebook{{ libro.imagen.url }}" alt="{{ libro.titulo }}" /></a>
+                    <a href="{% url 'detalle_libro' libro.id %}">{{ libro.titulo }}</a>
+                    <!-- Agrega más detalles según tus necesidades -->
+                </div>
+            {% else %}
+                <p>No hay libros disponibles en este momento.</p>
+            {% endif %}
+    </div>  
 {% endblock %}
 
 
