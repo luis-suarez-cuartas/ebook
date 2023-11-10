@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block contenido %}
     <section class = "contenedor general">
-        <h2> Generos Literarios </h2>
+        <h2> Géneros Literarios </h2>
         <div class = "Contenido">
             <div class = "Contenido-1 texto" >
                 <h3><a href="{% url 'poesia' %}">Poesía</a></h3>
@@ -35,13 +35,14 @@
             </div>
         </div>
     </section>
-    <div>
-        <h2> Últimos Libros Añadidos </h2>
+    <div class="librosRecientes">
+        <h3> Últimos Libros Añadidos </h3>
             {% for libro in ultimos_libros %}
-                <dsiv>
+                <div class="librosRecientesLista">
                     <a href="{% url 'detalle_libro' libro.id %}"><img src="/appmyebook{{ libro.imagen.url }}" alt="{{ libro.titulo }}" /></a>
+                    <p></p>
                     <a href="{% url 'detalle_libro' libro.id %}">{{ libro.titulo }}</a>
-                </dsiv>
+                </div>
             {% endfor %}
     </div>  
 {% endblock %}
