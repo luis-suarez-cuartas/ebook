@@ -18,16 +18,14 @@ def index_libro(request, genero_id, idioma_id):
     return render(request, 'generoIdioma.html', context) #TODO generoIdioma.html no existe
 
 def index(request):
-    idioma_nombre = request.session.get('idioma_seleccionado', None)
-    idioma = get_object_or_404(Idioma, nombre=idioma_nombre)
     # Obtener el último libro de cada género
     generos = Genero.objects.all()
     ultimos_libros = []
     for genero in generos:
-        ultimo_libro = Libro.objects.filter(genero=genero, idioma=idioma).order_by('-fecha_creacion').first()
+        ultimo_libro = Libro.objects.filter(genero=genero).order_by('-fecha_creacion').first()
         if ultimo_libro:
             ultimos_libros.append(ultimo_libro)
-    context = {'ultimos_libros': ultimos_libros, 'idioma': idioma}  
+    context = {'ultimos_libros': ultimos_libros}  
     return render(request, 'index.html')
 
 def literaturaClasica(request):

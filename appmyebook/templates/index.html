@@ -38,10 +38,10 @@
     <div>
         <h2> Últimos Libros Añadidos </h2>
             {% for libro in ultimos_libros %}
-                <div>
+                <dsiv>
                     <a href="{% url 'detalle_libro' libro.id %}"><img src="/appmyebook{{ libro.imagen.url }}" alt="{{ libro.titulo }}" /></a>
                     <a href="{% url 'detalle_libro' libro.id %}">{{ libro.titulo }}</a>
-                </div>
+                </dsiv>
             {% endfor %}
     </div>  
 {% endblock %}
