@@ -22,6 +22,8 @@ def index(request):
 
 def literaturaClasica(request):
     idioma_nombre = request.session.get('idioma_seleccionado', None)
+    if idioma_nombre is None:
+        idioma_nombre = 'Castellano'
     idioma = get_object_or_404(Idioma, nombre=idioma_nombre)
     libros = Libro.objects.filter(genero__nombre='Literatura Clásica', idioma=idioma)
     context = {'libros': libros, 'idioma': idioma}
@@ -29,6 +31,8 @@ def literaturaClasica(request):
 
 def filosofia(request):
     idioma_nombre = request.session.get('idioma_seleccionado', None)
+    if idioma_nombre is None:
+        idioma_nombre = 'Castellano'
     idioma = get_object_or_404(Idioma, nombre=idioma_nombre)
     libros = Libro.objects.filter(genero__nombre='Filosofía', idioma=idioma)
     context = {'libros': libros, 'idioma': idioma}
@@ -36,6 +40,8 @@ def filosofia(request):
 
 def poesia(request):
     idioma_nombre = request.session.get('idioma_seleccionado', None)
+    if idioma_nombre is None:
+        idioma_nombre = 'Castellano'
     idioma = get_object_or_404(Idioma, nombre=idioma_nombre)
     libros = Libro.objects.filter(genero__nombre='Poesía', idioma=idioma)
     context = {'libros': libros, 'idioma': idioma}
@@ -43,6 +49,8 @@ def poesia(request):
 
 def teatro(request):
     idioma_nombre = request.session.get('idioma_seleccionado', None)
+    if idioma_nombre is None:
+        idioma_nombre = 'Castellano'
     idioma = get_object_or_404(Idioma, nombre=idioma_nombre)
     libros = Libro.objects.filter(genero__nombre='Teatro', idioma=idioma)
     context = {'libros': libros, 'idioma': idioma}
@@ -50,6 +58,8 @@ def teatro(request):
 
 def novela(request):
     idioma_nombre = request.session.get('idioma_seleccionado', None)
+    if idioma_nombre is None:
+        idioma_nombre = 'Castellano'
     idioma = get_object_or_404(Idioma, nombre=idioma_nombre)
     libros = Libro.objects.filter(genero__nombre='Novela', idioma=idioma)
     context = {'libros': libros, 'idioma': idioma}
