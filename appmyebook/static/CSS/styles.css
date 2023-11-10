@@ -106,14 +106,19 @@ h1 a:hover:before {
     padding: 170px 55px;
 }
 
-.Contenido-1 a, .Contenido-2 a,.Contenido-3 a,.Contenido-4 a,.Contenido-5 a {
-    color: #ffffff;
+.Contenido-1 a, .Contenido-2 a, .Contenido-3 a, .Contenido-4 a, .Contenido-5 a {
+    color: #e7e7e7;
     text-decoration: none;
     font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    padding: 10px; /* Espaciado interno para mayor legibilidad */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    display: inline-block; /* Hace que cada enlace se comporte como un bloque en línea */
+    margin-bottom: 10px; /* Agregamos un margen inferior para separar los elementos */
 }
 
 .Contenido-1 a:hover, .Contenido-2 a:hover,.Contenido-3 a:hover,.Contenido-4 a:hover,.Contenido-5 a:hover{
-    color: #6d747f;
+    transform: scale(1.1);
 }
 
 .h2{
@@ -192,6 +197,14 @@ footer{
     line-height: 28px;
     font-size: 14px;
 }
+
+.footer-content a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    display: block; 
+}
+
 .socials{
     list-style: none;
     display: flex;
