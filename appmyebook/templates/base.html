@@ -18,12 +18,31 @@
     <div id="content">
         <h1><a href="{% url 'index' %}">My ebook</a></h1>
         <nav class="navbar">
-            <ul>
-                <li><a href="{% url 'literaturaClasica' %}">Literatura Clásica</a></li>
-                <li><a href="{% url 'novela' %}">Novela</a></li>
-                <li><a href="{% url 'filosofia' %}">Filosofía</a></li>
-                <li><a href="{% url 'teatro' %}">Teatro</a></li>
-                <li><a href="{% url 'poesia' %}">Poesía</a></li>
+            <ul class="menu-horizontal">
+                <li>
+                    <a href="#">Libros</a>
+                </li>
+                <li>
+                    <a href="#">Generos</a>
+                    <ul class = "menu-vertical">
+                        <li><a href="#">Literatura Clásica</a></li>
+                        <li><a href="#">Poesía</a></li>
+                        <li><a href="#">Novela</a></li>
+                        <li><a href="#">Teatro</a></li>
+                        <li><a href="#">Filosofía</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Idiomas</a>
+                    <ul class = "menu-vertical">
+                        <li><a href="#">Castellano</a></li>
+                        <li><a href="#">Alemán</a></li>
+                        <li><a href="#">Inglés</a></li>
+                        <li><a href="#">Francés</a></li>
+                        <li><a href="#">Euskera</a></li>
+                    </ul>
+                </li>
+                
             </ul>
             <form method="post" action="{% url 'cambiar_idioma' %}">
                 {% csrf_token %}
