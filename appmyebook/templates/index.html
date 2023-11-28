@@ -39,7 +39,7 @@
         <h3> Últimos Libros Añadidos </h3>
             {% for libro in ultimos_libros %}
                 <div class="librosRecientesLista">
-                    <a href="{% url 'detalle_libro' libro.id %}"><img src="/appmyebook{{ libro.imagen.url }}" alt="{{ libro.titulo }}" /></a>
+                    <a href="{% url 'detalle_libro' libro.id %}"><img src="{{ libro.imagen.url }}" alt="{{ libro.titulo }}" /></a>
                     <p></p>
                     <a href="{% url 'detalle_libro' libro.id %}">{{ libro.titulo }}</a>
                 </div>

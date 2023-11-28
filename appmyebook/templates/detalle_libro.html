@@ -29,7 +29,7 @@
     <div>
         <h2>Imagen:</h2>
         {% if libro.imagen %}
-            <img src="/appmyebook{{ libro.imagen.url }}" alt="Imagen del libro">
+            <img src="{{ libro.imagen.url }}" alt="Imagen del libro">
         {% else %}
             <p>No hay imagen disponible para este libro.</p>
         {% endif %}
