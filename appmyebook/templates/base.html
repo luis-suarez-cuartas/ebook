@@ -32,7 +32,7 @@
                     <option value="Euskera" {% if request.session.idioma_seleccionado = 'Euskera' %}selected{% endif %}>Euskera</option>
                     <option value="Francés" {% if request.session.idioma_seleccionado = 'Francés' %}selected{% endif %}>Francés</option>
                     <option value="Inglés" {% if request.session.idioma_seleccionado = 'Inglés' %}selected{% endif %}>Inglés</option>
-                    <option value="Alemán" {% if request.session.idioma_seleccionado == 'Alemán' %}selected{% endif %}>Alemán</option>
+                    <option value="Alemán" {% if request.session.idioma_seleccionado = 'Alemán' %}selected{% endif %}>Alemán</option>
                 </select>
             </form>
         </nav>
