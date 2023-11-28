@@ -1,33 +1,34 @@
 {% extends "base.html" %}
+{% load static %}
 {% block contenido %}
     <section class = "contenedor general">
         <h2> Géneros Literarios </h2>
         <div class = "Contenido">
-            <div class = "Contenido-1 texto" >
+            <div class="Contenido-1 texto" style="background-image: url('{% static 'img/poesia.jpeg' %}');">
                 <h3><a href="{% url 'poesia' %}">Poesía</a></h3>
                 <p> 
                 En la sección de Poesía de nuestra aplicación de e-books, te sumergirás en un mundo de expresión artística y emocional. Descubre una colección cuidadosamente seleccionada de obras poéticas que exploran las profundidades de la creatividad, las emociones y las reflexiones de diversos autores. Desde versos clásicos hasta poesía contemporánea, esta sección te invita a explorar el poder de las palabras y a conectarte con el alma de la poesía en sus múltiples formas y matices. Sumérgete en la belleza de la lírica y encuentra inspiración en la sección de Poesía. 
                 </p> 
             </div>
-            <div class = "Contenido-2 texto">
+            <div class = "Contenido-2 texto" style="background-image: url('{% static 'img/literaturaClasica.jpeg' %}');">
                 <h3><a href="{% url 'literaturaClasica' %}">Literatura Clásica</a></h3>
                 <p> 
                 En la sección de Literatura Clásica de nuestra aplicación de e-books, te embarcarás en un viaje a través de las obras maestras atemporales de la literatura. Explora las creaciones icónicas de autores legendarios que han dejado una huella indeleble en la historia de la literatura. Desde las epopeyas épicas hasta los diálogos filosóficos, esta sección te invita a descubrir la riqueza de la palabra escrita en su forma más perdurable. Sumérgete en el legado literario de siglos pasados y encuentra inspiración en la sección de Literatura Clásica.
                 </p> 
             </div>
-            <div class = "Contenido-3 texto">
+            <div class = "Contenido-3 texto" style="background-image: url('{% static 'img/novela.jpeg' %}');">
                 <h3><a href="{% url 'novela' %}">Novela</a></h3>
                 <p> 
                 En la sección de Novela de nuestra aplicación de e-books, te adentrarás en un mundo de narrativa cautivante y emocionante. Descubre una amplia gama de historias que abarcan géneros, desde el drama hasta la ciencia ficción, y con personajes inolvidables que te llevarán a lugares lejanos y aventuras inesperadas. Las novelas son el corazón de la ficción literaria, y esta sección te invita a explorar mundos imaginarios, intrigas apasionantes y reflexiones profundas. Sumérgete en la magia de la narrativa y encuentra tu próxima historia favorita en la sección de Novela.
                 </p> 
             </div>
-            <div class = "Contenido-4 texto">
+            <div class = "Contenido-4 texto" style="background-image: url('{% static 'img/teatro.jpeg' %}');">
                 <h3><a href="{% url 'teatro' %}">Teatro</a></h3>
                 <p> 
                 En la sección de Teatro de nuestra aplicación de e-books, te transportarás al emocionante mundo de las representaciones escénicas. Explora una selección de obras teatrales que abarcan desde tragedias clásicas hasta comedias contemporáneas, donde los personajes cobran vida en el escenario de tu imaginación. Desde diálogos ingeniosos hasta tramas cautivadoras, esta sección te invita a experimentar el poder y la emoción del teatro a través de las páginas de un libro. Sumérgete en la magia de las tablas y encuentra tu próxima obra favorita en la sección de Teatro.
                 </p> 
             </div>
-            <div class = "Contenido-5 texto">
+            <div class = "Contenido-5 texto" style="background-image: url('{% static 'img/filosofia.jpeg' %}');">
                 <h3><a href="{% url 'filosofia' %}">Filosofía</a></h3>
                 <p> 
                 En la sección de Filosofía de nuestra aplicación de e-books, te sumergirás en el mundo de la reflexión profunda y el pensamiento crítico. Explora las obras de filósofos y pensadores que han moldeado la comprensión de la existencia, la moralidad, la política y la metafísica. Desde los diálogos socráticos hasta las teorías contemporáneas, esta sección te invita a cuestionar, reflexionar y explorar las preguntas fundamentales de la humanidad. Sumérgete en las ideas y debates filosóficos y encuentra inspiración en la sección de Filosofía.
