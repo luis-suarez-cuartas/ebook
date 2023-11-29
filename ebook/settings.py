@@ -64,7 +64,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'appmyebook.context_processors.generos_context',
+                'appmyebook.context_processors.general_context',
             ],
         },
     },

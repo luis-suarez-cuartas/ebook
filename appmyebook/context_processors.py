@@ -1,5 +1,6 @@
 from .models import Genero, Idioma
 
-def generos_context(request):
+def general_context(request):
     generos = Genero.objects.all()
-    return {'generos': generos}
+    idiomas = Idioma.objects.all()
+    return {'generos': generos, 'idiomas': idiomas}

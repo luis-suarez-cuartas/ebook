@@ -34,14 +34,12 @@
                 <li>
                     <a href="#">Idiomas</a>
                     <ul class="menu-vertical">
-<!--                         {% for idioma in idiomas %}
+                        {% for idioma in idiomas %}
                             <li><a href="{% url 'show_idioma' idioma.id %}">{{ idioma.nombre }}</a></li>
-                        {% endfor %} -->
+                        {% endfor %}
                     </ul>
-                </li>
-                
-            </ul>
-            
+                </li>        
+            </ul>      
         </nav>
         {% block contenido %}{% endblock %}
         <footer>
