@@ -324,6 +324,11 @@ footer{
     justify-content: space-evenly;
 }
 
+.paginaGenero li, .paginaIdioma li, .paginaLibros li {
+    display: contents;
+}
+
+
 .libro-item {
     width: 25%;
     margin-bottom: 20px;
