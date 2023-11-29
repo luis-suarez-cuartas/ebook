@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block contenido %}
     <main>
-        <div class="paginaGenero">
-            <h3>{{ genero.nombre }}</h3>
-            <p>{{ genero.descripcion }}</p>
+        <div class="paginaLibros">
+            <h3>Todos los Libros</h3>
+            <p>Aquí encontrarás una selección completa de todos los libros disponibles en nuestra biblioteca.</p>
             <ul>
             {% for libro in libros %}
                 <div class="libro-item">
@@ -18,7 +18,3 @@
         </div>
     </main> 
 {% endblock %}
-
-
-
-

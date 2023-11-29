@@ -304,19 +304,19 @@ footer{
     height: auto;
 }
 
-.paginaGenero h3, .paginaIdioma h3 {
+.paginaGenero h3, .paginaIdioma h3, .paginaLibros h3 {
     color: #333;
     text-align: center;
     margin-top: 20px;
 }
 
-.paginaGenero p, .paginaIdioma p {
+.paginaGenero p, .paginaIdioma p, .paginaLibros p {
     line-height: 1.6;
     color: #666;
     margin-bottom: 20px;
 }
 
-.paginaGenero ul, .paginaIdioma ul {
+.paginaGenero ul, .paginaIdioma ul, .paginaLibros ul {
     list-style: none;
     padding: 0;
     display: flex;
@@ -359,7 +359,7 @@ footer{
     transform: scale(1.05);
 }
 
-main .paginaGenero, main .paginaIdioma {
+main .paginaGenero, main .paginaIdioma, main .paginaLibros {
     width: 80%;
     margin: 0 auto;
     background-color: #fff;
