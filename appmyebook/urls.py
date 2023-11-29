@@ -5,14 +5,12 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('literaturaClasica/', views.literaturaClasica, name='literaturaClasica'),
-    path('filosofia/', views.filosofia, name='filosofia'),
-    path('poesia/', views.poesia, name='poesia'),
-    path('teatro/', views.teatro, name='teatro'),
-    path('novela/', views.novela, name='novela'),
+
+    path('genero/<int:genero_id>/', views.show_genero, name='show_genero'),
+    path('idioma/<int:idioma_id>/', views.show_idioma, name='show_idioma'),
+
     path('cambiar_idioma/', views.cambiar_idioma, name='cambiar_idioma'),
     path('libro/<int:libro_id>', views.detalle_libro, name='detalle_libro'),
-    
     path('libro/<int:genero_id>/<int:idioma_id>/', views.index_libro, name='index_libro')
 
 ]

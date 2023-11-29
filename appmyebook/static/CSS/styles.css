@@ -12,6 +12,8 @@
     background-color: #000; /* Fondo negro para la barra de navegación */
     font-size: 20px;
     color: white; /* Letras blancas */
+    z-index:1000;
+    position: relative;
 }
 
 .menu-horizontal {

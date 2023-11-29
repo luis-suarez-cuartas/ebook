@@ -25,36 +25,23 @@
                 </li>
                 <li>
                     <a href="#">Generos</a>
-                    <ul class = "menu-vertical">
-                        <li><a href="#">Literatura Clásica</a></li>
-                        <li><a href="#">Poesía</a></li>
-                        <li><a href="#">Novela</a></li>
-                        <li><a href="#">Teatro</a></li>
-                        <li><a href="#">Filosofía</a></li>
+                    <ul class="menu-vertical">
+                        {% for genero in generos %}
+                            <li><a href="{% url 'show_genero' genero.id %}">{{ genero.nombre }}</a></li>
+                        {% endfor %}
                     </ul>
                 </li>
                 <li>
                     <a href="#">Idiomas</a>
-                    <ul class = "menu-vertical">
-                        <li><a href="#">Castellano</a></li>
-                        <li><a href="#">Alemán</a></li>
-                        <li><a href="#">Inglés</a></li>
-                        <li><a href="#">Francés</a></li>
-                        <li><a href="#">Euskera</a></li>
+                    <ul class="menu-vertical">
+<!--                         {% for idioma in idiomas %}
+                            <li><a href="{% url 'show_idioma' idioma.id %}">{{ idioma.nombre }}</a></li>
+                        {% endfor %} -->
                     </ul>
                 </li>
                 
             </ul>
-            <form method="post" action="{% url 'cambiar_idioma' %}">
-                {% csrf_token %}
-                <select name="idioma" id="select_idioma" onchange="this.form.submit()">
-                    <option value="Castellano" {% if request.session.idioma_seleccionado == 'Castellano' %}selected{% endif %}>Castellano</option>
-                    <option value="Euskera" {% if request.session.idioma_seleccionado == 'Euskera' %}selected{% endif %}>Euskera</option>
-                    <option value="Francés" {% if request.session.idioma_seleccionado == 'Francés' %}selected{% endif %}>Francés</option>
-                    <option value="Inglés" {% if request.session.idioma_seleccionado == 'Inglés' %}selected{% endif %}>Inglés</option>
-                    <option value="Alemán" {% if request.session.idioma_seleccionado == 'Alemán' %}selected{% endif %}>Alemán</option>
-                </select>
-            </form>
+            
         </nav>
         {% block contenido %}{% endblock %}
         <footer>
