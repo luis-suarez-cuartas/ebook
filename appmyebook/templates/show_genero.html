@@ -6,13 +6,15 @@
             <p>{{ genero.descripcion }}</p>
             <ul>
             {% for libro in libros %}
-                <div class="libro-item">
-                    <a href="{% url 'detalle_libro' libro.id %}">
-                        <img src="{{ libro.imagen.url }}" alt="{{ libro.titulo }}" />
-                    </a>
-                    <p></p>
-                    <a href="{% url 'detalle_libro' libro.id %}">{{ libro.titulo }}</a>
-                </div>
+                <li>
+                    <div class="libro-item">
+                        <a href="{% url 'detalle_libro' libro.id %}">
+                            <img src="{{ libro.imagen.url }}" alt="{{ libro.titulo }}" />
+                        </a>
+                        <p></p>
+                        <a href="{% url 'detalle_libro' libro.id %}">{{ libro.titulo }}</a>
+                    </div>
+                </li>
             {% endfor %}
             </ul>
         </div>

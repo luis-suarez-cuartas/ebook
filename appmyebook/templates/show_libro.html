@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block contenido %}
     <main>
-        <div class="paginaIdioma">
-            <h3>Libros en {{ idioma.nombre }}</h3>
-            <p>Aquí encontrarás una selección de libros en {{ idioma.nombre }}. Explora una variedad de títulos y géneros literarios disponibles en este idioma.</p>
+        <div class="paginaLibros">
+            <h3>Todos los Libros</h3>
+            <p>Aquí encontrarás una selección completa de todos los libros disponibles en nuestra biblioteca.</p>
             <ul>
             {% for libro in libros %}
                 <li>
@@ -20,4 +20,3 @@
         </div>
     </main> 
 {% endblock %}
-
