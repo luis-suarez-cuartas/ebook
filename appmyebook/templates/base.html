@@ -38,7 +38,10 @@
                             <li><a href="{% url 'show_idioma' idioma.id %}">{{ idioma.nombre }}</a></li>
                         {% endfor %}
                     </ul>
-                </li>        
+                </li>
+                <li>
+                    <a href="{% url 'agregarLibros' %}">Agregar libros</a>
+                </li>      
             </ul>      
         </nav>
         {% block contenido %}{% endblock %}
