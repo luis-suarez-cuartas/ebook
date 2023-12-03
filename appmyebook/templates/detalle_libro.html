@@ -1,18 +1,19 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block contenido %}
 <div class="detalle_libro">
-    <h1>Detalles del Ebook</h1>
+    <h1>{% trans "Detalles del Ebook" %}</h1>
     <div>
-        <h2>Título:</h2>
+        <h2>{% trans "Título:" %}</h2>
         <p>{{ libro.titulo }}</p>
     </div>
     
     <div>
-        <h2>Género:</h2>
+        <h2>{% trans "Género:" %}</h2>
         <p>{{ libro.genero }}</p>
     </div>
     <div>
-        <h2>Idiomas:</h2>
+        <h2>{% trans "Idiomas:" %}</h2>
         <ul>
             {% for idioma in libro.idioma.all %}
                 <li>{{ idioma.nombre }}</li>
@@ -20,19 +21,19 @@
         </ul>
     </div>
     <div>
-        <h2>Autor:</h2>
+        <h2>{% trans "Autor:" %}</h2>
         <p>{{ libro.autor }}</p>
     </div>
     <div>
-        <h2>Descripción:</h2>
+        <h2>{% trans "Descripción:" %}</h2>
         <p>{{ libro.descripcion }}</p>
     </div>
     <div>
-        <h2>Imagen:</h2>
+        <h2>{% trans "Imagen:" %}</h2>
         {% if libro.imagen %}
             <img src="{{ libro.imagen.url }}" alt="Imagen del libro">
         {% else %}
-            <p>No hay imagen disponible para este libro.</p>
+            <p>{% trans "No hay imagen disponible para este libro:" %}</p>
         {% endif %}
     </div>
 </div>

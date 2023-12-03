@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load static %}
 {% block javascript %}
     <script src="{% static 'js/cargarLibros.js' %}"></script>
@@ -6,8 +7,8 @@
 {% block contenido %}
     <main>
         <div class="paginaLibros">
-            <h3>Todos los Libros</h3>
-            <p>Aquí encontrarás una selección completa de todos los libros disponibles en nuestra biblioteca.</p>
+            <h3>{% trans "Todos los Libros" %}</h3>
+            <p>{% trans "Aquí encontrarás una selección completa de todos los libros disponibles en nuestra biblioteca." %}</p>
             <ul id="contenedorLibros">
                 <!-- Los libros cargados por AJAX aparecerán aquí -->
             </ul>

@@ -137,6 +137,8 @@ USE_I18N = True
 # Activar la localización
 USE_L10N = True
 
+LANGUAGE_CODE = 'es'
+
 # Idiomas disponibles
 LANGUAGES = [
     ('en', _('English')),

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load static %}
 {% block javascript %}
     <script src="{% static 'js/cargarLibrosIdioma.js' %}"></script>
@@ -6,8 +7,12 @@
 {% block contenido %}
     <main>
         <div class="paginaIdioma">
-            <h3>Libros en {{ idioma.nombre }}</h3>
-            <p>Aquí encontrarás una selección de libros en {{ idioma.nombre }}. Explora una variedad de títulos y géneros literarios disponibles en este idioma.</p>
+            <h3>{% blocktrans %}Libros en {{ idioma.nombre }}{% endblocktrans %}</h3>
+            <p>
+                {% blocktrans with idioma_nombre=idioma.nombre %}
+                Aquí encontrarás una selección de libros en {{ idioma_nombre }}. Explora una variedad de títulos y géneros literarios disponibles en este idioma.
+                {% endblocktrans %}
+            </p>
             <ul id="contenedorLibros">
                 <!-- Los libros cargados por AJAX aparecerán aquí -->
             </ul>

@@ -1,11 +1,11 @@
-{% extends "base.html" %} 
+{% load i18n %}
 {% block contenido %}
     <div class="formulario">
-        <h2>Agregar Libro</h2>
+        <h2>{% trans "Agregar Libro" %}</h2>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Guardar</button>
+            <button type="submit">{% trans "Guardar" %}</button>
         </form>
     </div>
 {% endblock %}
