@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 from pathlib import Path
+from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -49,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'ebook.urls'
@@ -128,3 +130,21 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'appmyebook', 'static')]
 # Configuración para archivos multimedia (imágenes, archivos subidos por usuarios, etc.)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'appmyebook', 'media')
+
+# Activar la internacionalización
+USE_I18N = True
+
+# Activar la localización
+USE_L10N = True
+
+# Idiomas disponibles
+LANGUAGES = [
+    ('en', _('English')),
+    ('es', _('Spanish')),
+    ('fr', _('French')),
+    ('de', _('German')),
+    ('eu', _('Euskera')),
+]
+
+# Directorio donde se guardan los archivos de mensajes
+LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]

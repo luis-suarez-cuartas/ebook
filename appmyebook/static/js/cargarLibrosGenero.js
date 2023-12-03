@@ -1,15 +1,21 @@
+function getLanguagePrefix() {
+    const path = window.location.pathname.split('/');
+    return path[1]; // El prefijo del idioma es el segundo segmento de la URL
+}
 
 function getGeneroIdFromUrl() {
     const path = window.location.pathname.split('/');
-    return path[2];
+    return path[3]; // El ID del género es el cuarto segmento de la URL
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    cargarLibrosGenero(getGeneroIdFromUrl());
+    const languagePrefix = getLanguagePrefix();
+    const generoId = getGeneroIdFromUrl();
+    cargarLibrosGenero(languagePrefix, generoId);
 });
 
-function cargarLibrosGenero(generoId) {
-    fetch(`/genero/${generoId}/`, {
+function cargarLibrosGenero(languagePrefix, generoId) {
+    fetch(`/${languagePrefix}/genero/${generoId}/`, {
         headers: {
             'X-Requested-With': 'XMLHttpRequest'
         }

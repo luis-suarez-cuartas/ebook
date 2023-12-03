@@ -1,14 +1,22 @@
+function getLanguagePrefix() {
+    const path = window.location.pathname.split('/');
+    return path[1]; // El prefijo del idioma es el segundo segmento de la URL
+}
+
 function getIdiomaIdFromUrl() {
     const path = window.location.pathname.split('/');
-    return path[2];
+    return path[3]; // Asumiendo que el ID del idioma está en el cuarto segmento
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    cargarLibrosIdioma(getIdiomaIdFromUrl());
+    const languagePrefix = getLanguagePrefix();
+    const idiomaId = getIdiomaIdFromUrl();
+    cargarLibrosIdioma(languagePrefix, idiomaId);
 });
 
-function cargarLibrosIdioma(idiomaId) {
-    fetch(`/idioma/${idiomaId}/`, {
+function cargarLibrosIdioma(languagePrefix, idiomaId) {
+    const url = `/${languagePrefix}/idioma/${idiomaId}/`;
+    fetch(url, {
         headers: {
             'X-Requested-With': 'XMLHttpRequest'
         }

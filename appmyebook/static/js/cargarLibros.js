@@ -1,9 +1,18 @@
+
+function getLanguagePrefix() {
+    const path = window.location.pathname.split('/');
+    return path[1]; // El prefijo del idioma es el segundo segmento de la URL
+}
+
 document.addEventListener('DOMContentLoaded', function() {
-    cargarLibros();
+    const languagePrefix = getLanguagePrefix();
+    cargarLibros(languagePrefix);
+
 });
 
-function cargarLibros() {
-    fetch('/libros/', {
+function cargarLibros(languagePrefix) {
+    const url = `/${languagePrefix}/libros/`;
+    fetch(url, {
         headers: {
             'X-Requested-With': 'XMLHttpRequest'
         }

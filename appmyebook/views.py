@@ -14,6 +14,9 @@ from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView
 from .forms import LibroForm
 
+from django.utils.translation import gettext as _, gettext_lazy
+
+
 class IndexView(TemplateView):
     template_name = 'index.html'
 
@@ -68,7 +71,6 @@ class ShowLibroView(ListView):
         else:
             return super().render_to_response(context, **response_kwargs)
 
-
 class ShowGeneroView(ListView):
     model = Libro
     template_name = 'show_genero.html'
@@ -87,13 +89,10 @@ class ShowGeneroView(ListView):
                     libro['imagen_url'] = self.request.build_absolute_uri(settings.MEDIA_URL + libro['imagen'])
                 else:
                     libro['imagen_url'] = settings.MEDIA_URL + "default.jpg"
-            # Obtén los datos del género
             genero_data = {
                 'nombre': self.object_list[0].genero.nombre,
                 'descripcion': self.object_list[0].genero.descripcion
             }
-
-            # Envía tanto los libros como los datos del género
             data = {
                 'libros': libros,
                 'genero': genero_data
@@ -115,19 +114,16 @@ class ShowIdiomaView(ListView):
     def render_to_response(self, context, **response_kwargs):
         if self.request.headers.get('X-Requested-With') == 'XMLHttpRequest':
             idioma_id = self.kwargs['idioma_id']
-            idioma = get_object_or_404(Idioma, pk=idioma_id)  # Obtiene el objeto Idioma
-
+            idioma = get_object_or_404(Idioma, pk=idioma_id)
             libros = list(self.get_queryset().values('id', 'titulo', 'imagen'))
             for libro in libros:
                 if libro['imagen']:
                     libro['imagen_url'] = self.request.build_absolute_uri(settings.MEDIA_URL + libro['imagen'])
                 else:
                     libro['imagen_url'] = settings.MEDIA_URL + "default.jpg"
-
             idioma_data = {
-                'nombre': idioma.nombre  # Usa el objeto idioma para obtener el nombre
+                'nombre': idioma.nombre
             }
-
             data = {
                 'libros': libros,
                 'idioma': idioma_data
@@ -135,7 +131,7 @@ class ShowIdiomaView(ListView):
             return JsonResponse(data)
         else:
             return super().render_to_response(context, **response_kwargs)
-    
+
 class DetalleLibroView(DetailView):
     model = Libro
     template_name = 'detalle_libro.html'
@@ -144,22 +140,20 @@ class DetalleLibroView(DetailView):
     def get_object(self, queryset=None):
         libro_id = self.kwargs['libro_id']
         return get_object_or_404(Libro, pk=libro_id)
-    
+
 class AgregarLibroView(CreateView):
     model = Libro
     form_class = LibroForm
     template_name = 'agregarLibros.html'
     def get_success_url(self):
-        # Redirige a la URL de 'index' después de agregar un libro
         return reverse_lazy('index')
 
 def cambiar_idioma(request):
     if request.method == 'POST':
         idioma = request.POST.get('idioma')
         if idioma:
-            request.session['idioma_seleccionado'] = idioma 
+            request.session['idioma_seleccionado'] = idioma
     return redirect(request.META.get('HTTP_REFERER', '/'))
-
 
 def index_libro(request, genero_id, idioma_id):
     genero = get_object_or_404(Genero, pk=genero_id)
@@ -167,6 +161,5 @@ def index_libro(request, genero_id, idioma_id):
     libros = get_list_or_404(Libro, genero=genero, idioma=idioma, aprobado=True)
     context = {'libros': libros}
     return render(request, 'generoIdioma.html', context)
-
 
 
