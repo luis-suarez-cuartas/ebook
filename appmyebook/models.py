@@ -22,6 +22,7 @@ class Libro(models.Model):
     idioma = models.ManyToManyField(Idioma) # Un libro puede estar en varios idiomas
     imagen = models.ImageField(upload_to='', null=True, blank=True) # Campo para la imagen del libro
     fecha_creacion = models.DateTimeField(auto_now_add=True)
+    aprobado = models.BooleanField(default=False)
     def __str__(self):
         return self.titulo
 

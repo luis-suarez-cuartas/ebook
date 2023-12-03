@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, get_list_or_404
 from django.shortcuts import render
 from django.db.models import Max
+from django.urls import reverse_lazy
 from .models import Libro, Genero, Idioma
 from django.shortcuts import redirect
 from django.views.generic.list import ListView
@@ -17,7 +18,7 @@ class IndexView(TemplateView):
         consulta = '''
             SELECT * FROM (
                 SELECT *, ROW_NUMBER() OVER (PARTITION BY genero_id ORDER BY fecha_creacion DESC) as rn 
-                FROM appmyebook_libro
+                FROM appmyebook_libro WHERE aprobado = True
             ) as subquery WHERE rn = 1
         '''
         ultimos_libros = Libro.objects.raw(consulta)
@@ -30,7 +31,7 @@ class ShowLibroView(ListView):
     context_object_name = 'libros'     
 
     def get_queryset(self):
-        return Libro.objects.all().order_by('-fecha_creacion')  
+        return Libro.objects.filter(aprobado=True).order_by('-fecha_creacion')
 
 
 class ShowGeneroView(ListView):
@@ -41,7 +42,7 @@ class ShowGeneroView(ListView):
     def get_queryset(self):
         genero_id = self.kwargs['genero_id']
         genero = get_object_or_404(Genero, pk=genero_id)
-        return genero.libro_set.all().order_by('-fecha_creacion')
+        return genero.libro_set.filter(aprobado=True).order_by('-fecha_creacion')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -57,7 +58,7 @@ class ShowIdiomaView(ListView):
     def get_queryset(self):
         idioma_id = self.kwargs['idioma_id']
         idioma = get_object_or_404(Idioma, pk=idioma_id)
-        return Libro.objects.filter(idioma=idioma).order_by('-fecha_creacion')
+        return Libro.objects.filter(idioma=idioma, aprobado=True).order_by('-fecha_creacion')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -78,6 +79,9 @@ class AgregarLibroView(CreateView):
     model = Libro
     form_class = LibroForm
     template_name = 'agregarLibros.html'
+    def get_success_url(self):
+        # Redirige a la URL de 'index' después de agregar un libro
+        return reverse_lazy('index')
 
 def cambiar_idioma(request):
     if request.method == 'POST':
@@ -87,15 +91,12 @@ def cambiar_idioma(request):
     return redirect(request.META.get('HTTP_REFERER', '/'))
 
 
-
-
-# devuelve los libros de un genero y un idioma
 def index_libro(request, genero_id, idioma_id):
     genero = get_object_or_404(Genero, pk=genero_id)
     idioma = get_object_or_404(Idioma, pk=idioma_id)
-    libros = get_list_or_404(Libro, genero=genero, idioma=idioma)
+    libros = get_list_or_404(Libro, genero=genero, idioma=idioma, aprobado=True)
     context = {'libros': libros}
-    return render(request, 'generoIdioma.html', context) #TODO generoIdioma.html no existe
+    return render(request, 'generoIdioma.html', context)
 
 
 

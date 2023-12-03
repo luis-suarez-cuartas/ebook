@@ -1,0 +1,34 @@
+
+Opción 1 (0,75 puntos): Interacción enriquecida en el cliente con JavaScript (eventos, efectos, ajax) y sus librerías o frameworks.
+
+
+Opción 4 (0,50 puntos): Personalizar la aplicación de administración, modificando el diseño y dando soporte a varios roles de usuarios administradores con diferentes permisos.
+
+Opción 6 (0,75 puntos): Multilingüismo - i18n (traducir algunas partes estáticas de las plantillas a otro idioma y activar esta funcionalidad en las URLs del proyecto).
+
+
+
+Opción 2 (0,75 puntos): Uso de vistas basadas en clases en todas las funcionalidades básicas.
+
+Opción 3 (0,75 puntos): Uso de formularios en la aplicación pública basados en entidades del modelo o en nuevas entidades añadidas.
+	Inserción de nuevo libro mediante formulario
+
+Opción 5 (0,50 puntos): Carga de datos iniciales para la aplicación (todas las entidades).
+	--> Fixtures
+		Descargar mediante fixtures
+			set PYTHONIOENCODING=utf-8
+			py manage.py dumpdata > appmyebook/offers/fixtures/sample.json
+		Cargar 
+			python manage.py loaddata appmyebook/offers/fixtures/sample
+	--> Migrations
+		0011_load_initial_data.py
+
+Opción 7 (0,50 puntos): Incluir mejoras de rendimiento y comprobaciones de seguridad (escanear posibles vulnerabilidades y corregir lo que se pueda).
+	--> Seguridad	
+		Validación de los administradores de los nuevos libros insertados por el usaurio, para evitar cualquier tipo de ataque
+
+
+
+	--> Mejoras de rendimiento
+		Inserción de sentencia sql 
+			" consulta = '''SELECT * FROM (SELECT *, ROW_NUMBER() OVER (PARTITION BY genero_id ORDER BY fecha_creacion DESC) as rn FROM appmyebook_libro WHERE aprobado = True) as subquery WHERE rn = 1''' "

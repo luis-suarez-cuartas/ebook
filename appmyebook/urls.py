@@ -19,7 +19,7 @@ urlpatterns = [
     path('cambiar_idioma/', views.cambiar_idioma, name='cambiar_idioma'),
     path('libro/<int:genero_id>/<int:idioma_id>/', views.index_libro, name='index_libro'),
     path('libro/agregar/', AgregarLibroView.as_view(), name='agregarLibros'),
-
+    
 ]
 
 if settings.DEBUG:
