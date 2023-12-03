@@ -1,21 +1,15 @@
 {% extends "base.html" %}
+{% load static %}
+{% block javascript %}
+    <script src="{% static 'js/cargarLibros.js' %}"></script>
+{% endblock %}
 {% block contenido %}
     <main>
         <div class="paginaLibros">
             <h3>Todos los Libros</h3>
             <p>Aquí encontrarás una selección completa de todos los libros disponibles en nuestra biblioteca.</p>
-            <ul>
-            {% for libro in libros %}
-                <li>
-                    <div class="libro-item">
-                        <a href="{% url 'detalle_libro' libro.id %}">
-                            <img src="{{ libro.imagen.url }}" alt="{{ libro.titulo }}" />
-                        </a>
-                        <p></p>
-                        <a href="{% url 'detalle_libro' libro.id %}">{{ libro.titulo }}</a>
-                    </div>
-                </li>
-            {% endfor %}
+            <ul id="contenedorLibros">
+                <!-- Los libros cargados por AJAX aparecerán aquí -->
             </ul>
         </div>
     </main> 

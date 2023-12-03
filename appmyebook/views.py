@@ -1,7 +1,11 @@
+from urllib.parse import urljoin
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, get_list_or_404
 from django.shortcuts import render
 from django.db.models import Max
 from django.urls import reverse_lazy
+
+from ebook import settings
 from .models import Libro, Genero, Idioma
 from django.shortcuts import redirect
 from django.views.generic.list import ListView
@@ -27,11 +31,23 @@ class IndexView(TemplateView):
     
 class ShowLibroView(ListView):
     model = Libro
-    template_name = 'show_libro.html'  
-    context_object_name = 'libros'     
+    template_name = 'show_libro.html'
+    context_object_name = 'libros'
 
     def get_queryset(self):
         return Libro.objects.filter(aprobado=True).order_by('-fecha_creacion')
+
+    def render_to_response(self, context, **response_kwargs):
+        if self.request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+            libros = self.get_queryset().values('id', 'titulo', 'imagen')
+            for libro in libros:
+                if libro['imagen']:
+                    libro['imagen_url'] = self.request.build_absolute_uri(settings.MEDIA_URL + libro['imagen'])
+                else:
+                    libro['imagen_url'] = settings.MEDIA_URL + "default.jpg"
+            return JsonResponse(list(libros), safe=False)
+        else:
+            return super().render_to_response(context, **response_kwargs)
 
 
 class ShowGeneroView(ListView):
@@ -43,12 +59,29 @@ class ShowGeneroView(ListView):
         genero_id = self.kwargs['genero_id']
         genero = get_object_or_404(Genero, pk=genero_id)
         return genero.libro_set.filter(aprobado=True).order_by('-fecha_creacion')
+    
+    def render_to_response(self, context, **response_kwargs):
+        if self.request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+            libros = list(self.get_queryset().values('id', 'titulo', 'imagen'))
+            for libro in libros:
+                if libro['imagen']:
+                    libro['imagen_url'] = self.request.build_absolute_uri(settings.MEDIA_URL + libro['imagen'])
+                else:
+                    libro['imagen_url'] = settings.MEDIA_URL + "default.jpg"
+            # Obtén los datos del género
+            genero_data = {
+                'nombre': self.object_list[0].genero.nombre,
+                'descripcion': self.object_list[0].genero.descripcion
+            }
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        genero_id = self.kwargs['genero_id']
-        context['genero'] = get_object_or_404(Genero, pk=genero_id)
-        return context
+            # Envía tanto los libros como los datos del género
+            data = {
+                'libros': libros,
+                'genero': genero_data
+            }
+            return JsonResponse(data)
+        else:
+            return super().render_to_response(context, **response_kwargs)
 
 class ShowIdiomaView(ListView):
     model = Libro
@@ -60,11 +93,29 @@ class ShowIdiomaView(ListView):
         idioma = get_object_or_404(Idioma, pk=idioma_id)
         return Libro.objects.filter(idioma=idioma, aprobado=True).order_by('-fecha_creacion')
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        idioma_id = self.kwargs['idioma_id']
-        context['idioma'] = get_object_or_404(Idioma, pk=idioma_id)
-        return context
+    def render_to_response(self, context, **response_kwargs):
+        if self.request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+            idioma_id = self.kwargs['idioma_id']
+            idioma = get_object_or_404(Idioma, pk=idioma_id)  # Obtiene el objeto Idioma
+
+            libros = list(self.get_queryset().values('id', 'titulo', 'imagen'))
+            for libro in libros:
+                if libro['imagen']:
+                    libro['imagen_url'] = self.request.build_absolute_uri(settings.MEDIA_URL + libro['imagen'])
+                else:
+                    libro['imagen_url'] = settings.MEDIA_URL + "default.jpg"
+
+            idioma_data = {
+                'nombre': idioma.nombre  # Usa el objeto idioma para obtener el nombre
+            }
+
+            data = {
+                'libros': libros,
+                'idioma': idioma_data
+            }
+            return JsonResponse(data)
+        else:
+            return super().render_to_response(context, **response_kwargs)
     
 class DetalleLibroView(DetailView):
     model = Libro

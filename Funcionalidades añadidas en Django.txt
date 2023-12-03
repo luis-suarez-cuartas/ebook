@@ -1,12 +1,11 @@
 
-Opción 1 (0,75 puntos): Interacción enriquecida en el cliente con JavaScript (eventos, efectos, ajax) y sus librerías o frameworks.
-
-
 Opción 4 (0,50 puntos): Personalizar la aplicación de administración, modificando el diseño y dando soporte a varios roles de usuarios administradores con diferentes permisos.
 
 Opción 6 (0,75 puntos): Multilingüismo - i18n (traducir algunas partes estáticas de las plantillas a otro idioma y activar esta funcionalidad en las URLs del proyecto).
 
 
+Opción 1 (0,75 puntos): Interacción enriquecida en el cliente con JavaScript (eventos, efectos, ajax) y sus librerías o frameworks.
+	Hemos implementado carga mediante ajax en todas las plantillas
 
 Opción 2 (0,75 puntos): Uso de vistas basadas en clases en todas las funcionalidades básicas.
 

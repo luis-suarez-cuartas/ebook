@@ -1,23 +1,18 @@
 {% extends "base.html" %}
+{% load static %}
+{% block javascript %}
+    <script src="{% static 'js/cargarLibrosIdioma.js' %}"></script>
+{% endblock %}
 {% block contenido %}
     <main>
         <div class="paginaIdioma">
             <h3>Libros en {{ idioma.nombre }}</h3>
             <p>Aquí encontrarás una selección de libros en {{ idioma.nombre }}. Explora una variedad de títulos y géneros literarios disponibles en este idioma.</p>
-            <ul>
-            {% for libro in libros %}
-                <li>
-                    <div class="libro-item">
-                        <a href="{% url 'detalle_libro' libro.id %}">
-                            <img src="{{ libro.imagen.url }}" alt="{{ libro.titulo }}" />
-                        </a>
-                        <p></p>
-                        <a href="{% url 'detalle_libro' libro.id %}">{{ libro.titulo }}</a>
-                    </div>
-                </li>
-            {% endfor %}
+            <ul id="contenedorLibros">
+                <!-- Los libros cargados por AJAX aparecerán aquí -->
             </ul>
         </div>
     </main> 
 {% endblock %}
+
 
