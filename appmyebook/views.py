@@ -25,9 +25,28 @@ class IndexView(TemplateView):
                 FROM appmyebook_libro WHERE aprobado = True
             ) as subquery WHERE rn = 1
         '''
-        ultimos_libros = Libro.objects.raw(consulta)
-        context['ultimos_libros'] = ultimos_libros
+        context['ultimos_libros'] = Libro.objects.raw(consulta)
         return context
+
+    def get(self, request, *args, **kwargs):
+        if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+            return self.handle_ajax_request()
+        else:
+            return super().get(request, *args, **kwargs)
+
+    def handle_ajax_request(self):
+        ultimos_libros = Libro.objects.raw('''
+            SELECT * FROM (
+                SELECT *, ROW_NUMBER() OVER (PARTITION BY genero_id ORDER BY fecha_creacion DESC) as rn 
+                FROM appmyebook_libro WHERE aprobado = True
+            ) as subquery WHERE rn = 1
+        ''')
+        data = [{
+            'id': libro.id,
+            'titulo': libro.titulo,
+            'imagen_url': libro.imagen.url if libro.imagen else settings.MEDIA_URL + "default.jpg"
+        } for libro in ultimos_libros]
+        return JsonResponse({'ultimos_libros': data})
     
 class ShowLibroView(ListView):
     model = Libro

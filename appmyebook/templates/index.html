@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
+{% block javascript %}
+    <script src="{% static 'js/cargarUltimosLibros.js' %}"></script>
+{% endblock %}
 {% block contenido %}
     <section class = "contenedor general">
         <h2> Géneros Literarios </h2>
@@ -37,14 +40,8 @@
         </div>
     </section>
     <div class="librosRecientes">
-        <h3> Últimos Libros Añadidos </h3>
-            {% for libro in ultimos_libros %}
-                <div class="librosRecientesLista">
-                    <a href="{% url 'detalle_libro' libro.id %}"><img src="{{ libro.imagen.url }}" alt="{{ libro.titulo }}" /></a>
-                    <p></p>
-                    <a href="{% url 'detalle_libro' libro.id %}">{{ libro.titulo }}</a>
-                </div>
-            {% endfor %}
+        <!-- Los libros cargados por AJAX aparecerán aquí -->
+        <!-- El título "Últimos Libros Añadidos" y los libros se agregarán dinámicamente con JavaScript -->
     </div>
 {% endblock %}
 
