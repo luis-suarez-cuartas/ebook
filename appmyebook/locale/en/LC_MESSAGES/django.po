@@ -126,24 +126,19 @@ msgid "Géneros Literarios"
 msgstr "Literary Genres"
 
 #: .\templates\show_idioma.html:10
-#, python-format
-msgid "Libros en %(idioma.nombre)s"
-msgstr "Books in %(idioma.nombre)s"
+msgid "Libros en"
+msgstr "Books in"
 
-#: .\templates\show_idioma.html:12
-#, python-format
+#: .\templates\show_idioma.html:11
+msgid "Aquí encontrarás una selección de libros en "
+msgstr "Here you will find a selection of books in"
+
+#: .\templates\show_idioma.html:13
 msgid ""
-"\n"
-"                Aquí encontrarás una selección de libros en "
-"%(idioma_nombre)s. Explora una variedad de títulos y géneros literarios "
-"disponibles en este idioma.\n"
-"                "
-msgstr ""
-"\n"
-"                Here you will find a selection of books in "
-"%(idioma_nombre)s. Explore a variety of titles and literary genres "
-"available in this language.\n"
-"                "
+". Explora una variedad de títulos y géneros literarios disponibles en este "
+"idioma."
+msgstr "Explore a variety of titles and literary genres "
+"available in this language"
 
 #: .\templates\show_libro.html:10
 msgid "Todos los Libros"
